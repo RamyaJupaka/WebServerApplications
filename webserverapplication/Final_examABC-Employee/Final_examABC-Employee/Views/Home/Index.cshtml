@@ -1,0 +1,79 @@
+﻿@model Final_examABC_Employee.Models.User
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="form-group">
+    <label for="type">Type</label>
+    <select id="Select1" class="form-control">
+        <option value="employee">Employee</option>
+        <option value="manager"> Manager </option>
+    </select>
+</div>
+
+<div id="assignments" style="margin-top:50px">
+    <form asp-controller="JobAssignments" asp-action="Index">
+        <div class="form-row">
+            <div class="col">
+                <input asp-for="Id" class="'form-control" type="text" placeholder="User Id" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col">
+                <input asp-for="Password" class="'form-control" type="password" placeholder="Password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+
+    </form>
+
+</div>
+
+<div id="students" style="margin-top:50px">
+
+    <form asp-controller="Employees" asp-action="Index">
+        <div class="form-row">
+            <div class="col">
+                <input asp-for="Id" class="'form-control" type="text" placeholder="User Id" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col">
+                <input asp-for="Password" class="'form-control" type="password" placeholder="Password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+
+@{
+
+    <script>
+
+        let select = document.querySelector('#Select1');
+        let t = document.querySelector('#assignments');
+        let s = document.querySelector('#students');
+        const selectChange = () => {
+            let option = select.options[select.selectedIndex].innerText;
+            if (option === 'Employee') {
+
+                    s.style.display = 'block'
+                    t.style.display = 'none'
+            } else {
+                    console.log(option);
+                    s.style.display = 'none'
+                    t.style.display = 'block'
+            }
+        }
+
+        selectChange();
+
+        select.onchange = selectChange;
+
+    </script>
+}

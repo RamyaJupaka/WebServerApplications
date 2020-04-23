@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Final_examABC_Employee.Models.Jobs>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTtile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTtile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.JobCode">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.JobCode">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.JobCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
